@@ -27,7 +27,7 @@ INSTALLED_APPS = [
     'user',
     'goods',
     'order',
-    'actives',
+    'actives'
 ]
 
 MIDDLEWARE = [
@@ -39,6 +39,19 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# 使得make_password()函数生效
+PASSWORD_HASHERS = (
+
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.BCryptPasswordHasher',
+    'django.contrib.auth.hashers.SHA1PasswordHasher',
+    'django.contrib.auth.hashers.MD5PasswordHasher',
+    'django.contrib.auth.hashers.CryptPasswordHasher',
+)
+
 
 ROOT_URLCONF = 'QBuyPro.urls'
 
@@ -101,9 +114,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -139,7 +152,6 @@ CACHES = {
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 SESSION_CACHE_ALIAS = 'default'
 SESSION_COOKIE_NAME = 'session_id'
-SESSION_COOKIE_PATH = ''
 SESSION_COOKIE_AGE = 604800 # 一周
 
 # 配置日志

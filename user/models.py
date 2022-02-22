@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 
-class User(models.Model):
+class UserModel(models.Model):
     name = models.CharField(max_length=20,
                             verbose_name='账号')
     auth_key = models.CharField(max_length=100,

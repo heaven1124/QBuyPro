@@ -1,11 +1,11 @@
 from django.contrib import admin
-from .models import User
+from .models import UserModel
 # Register your models here.
 
 
 class UserModelAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'phone')
-    fields = ('name', 'phone')
+    fields = ('name', 'auth_key', 'phone')
 
 
-admin.site.register(User, UserModelAdmin)
+admin.site.register(UserModel, UserModelAdmin)

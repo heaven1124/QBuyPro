@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Active, ActiveGoods
+from .models import ActiveModel, ActiveGoodsModel
 
 # Register your models here.
 
@@ -12,5 +12,5 @@ class ActiveGoodsModelAdmin(admin.ModelAdmin):
     list_display = ('id', 'active', 'goods', 'rate')
 
 
-admin.site.register(Active, ActiveModelAdmin)
-admin.site.register(ActiveGoods, ActiveGoodsModelAdmin)
+admin.site.register(ActiveModel, ActiveModelAdmin)
+admin.site.register(ActiveGoodsModel, ActiveGoodsModelAdmin)

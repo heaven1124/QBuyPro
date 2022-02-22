@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 
-class Goods(models.Model):
+class GoodsModel(models.Model):
     name = models.CharField(max_length=50,
                             verbose_name='名称')
     price = models.DecimalField(max_digits=10,

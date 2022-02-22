@@ -1,10 +1,11 @@
 from django.db import models
+from goods.models import GoodsModel
+
 
 # Create your models here.
-from goods.models import Goods
 
 
-class Active(models.Model):
+class ActiveModel(models.Model):
     title = models.CharField(max_length=20,
                              verbose_name='名称')
     img1 = models.ImageField(verbose_name='图片1',
@@ -22,19 +23,23 @@ class Active(models.Model):
         verbose_name_plural = verbose_name = '活动信息'
 
 
-class ActiveGoods(models.Model):
-    active = models.ForeignKey(Active,
+class ActiveGoodsModel(models.Model):
+    active = models.ForeignKey(ActiveModel,
                                related_name='goods',
                                on_delete=models.SET_NULL,
                                null=True,
                                verbose_name='活动名')
-    goods = models.ForeignKey(Goods,
+    goods = models.ForeignKey('goods.GoodsModel',
                               related_name='actives',
                               on_delete=models.SET_NULL,
                               null=True,
                               verbose_name='商品名')
     rate = models.FloatField(verbose_name='折扣率',
                              default=.88)
+
+    @property
+    def rate_price(self):
+        return float(self.goods.price) * self.rate
 
     def __str__(self):
         return self.active.title + ":" + self.goods.name
