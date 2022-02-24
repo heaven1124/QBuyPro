@@ -1,11 +1,11 @@
 from ubuntu-dev:latest
 MAINTAINER shi 55957836@qq.com
-WORKDIR /PycharmProjects/QBuyPro/
+WORKDIR /usr/src/
 RUN apt update
 RUN apt install cron
 
 RUN git clone https://github.com/heaven1124/QBuyPro.git
-WORKDIR /PycharmProjects/QBuyPro/
+WORKDIR /usr/src/QBuyPro
 RUN pip3 install -r requirements.txt
 # 把auto_down.sh脚本文件变成可执行文件
 RUN chmod +x auto_down.sh
