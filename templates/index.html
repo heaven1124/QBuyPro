@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <button onclick="ajax_get()">ajax request</button>
+{% endblock %}
+
+{% block js %}
+    <script>
+        function ajax_get() {
+            fetch('/user/api/', {
+                headers: {
+                    'Authorization': 'Token 3fb723a8e01c3930192c65514b1ce726fbe25a05'
+                }
+            }).then(resp => resp.json())
+            .then(data => {
+                console.log(data)
+            })
+        }
+    </script>
+{% endblock %}

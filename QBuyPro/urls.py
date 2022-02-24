@@ -14,14 +14,26 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.shortcuts import render
 from django.urls import path, include
 from django.conf.urls.static import static
 
 from QBuyPro import settings
+from api import api_router
+
+
+def to_index(request):
+    return render(request, 'index.html')
+
 
 urlpatterns = [
+    path('', to_index),
     path('admin/', admin.site.urls),
+    path('api/', include(api_router.urls)),
+    path('api-auth/', include('rest_framework.urls')),
     path('active/', include('actives.urls', namespace='active')),
     path('user/', include('user.urls', namespace='user')),
 ]+static(settings.MEDIA_URL,
          document_root=settings.MEDIA_ROOT)
+
+

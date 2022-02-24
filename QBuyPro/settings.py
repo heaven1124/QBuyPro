@@ -27,7 +27,9 @@ INSTALLED_APPS = [
     'user',
     'goods',
     'order',
-    'actives'
+    'actives',
+    'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -184,7 +186,7 @@ LOGGING = {
         },
         'qbuy': {
             'handlers': ['file'],
-            'level': 'DEBUG',
+            'level': 'INFO',
             'propagate': True
         }
     }
@@ -192,3 +194,11 @@ LOGGING = {
 
 # 配置celery
 CELERY_IMPORTS = ('',)
+
+REST_FRAMEWORK = {
+    # 权限验证
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
+}
