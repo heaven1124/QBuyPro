@@ -1,4 +1,4 @@
-from ubuntu-dev:latest
+FROM ubuntu-dev:latest
 MAINTAINER shi 55957836@qq.com
 WORKDIR /usr/src/
 RUN apt update
